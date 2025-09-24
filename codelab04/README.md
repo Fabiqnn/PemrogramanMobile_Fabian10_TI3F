@@ -203,3 +203,107 @@ Hasil dikelompokkan dari beberapa nilai menjadi satu, yang diurutkan berdasarkan
   print(mahasiswa2.$2); // Prints 'last'
 ```
 ![P5_L5](img/P5_L5.png) 
+
+## Soal Praktikum
+  2. Jelaskan yang dimaksud Functions dalam bahasa Dart!  
+      Fungsi adalah blok kode yang dapat dipanggil dan gunakan berulang kali.
+  3. Jelaskan jenis-jenis parameter di Functions beserta contoh sintaksnya!  
+      + Potitional Parameter (parameter wajib yang harus diinputkan ketika memanggil function), ditulis berurutan dalam ()  
+      + Optional parameter, parameter yang tidak wajib diinputkan ditaruh di dalam []  
+      + Named parameter, parameter yang harus menyebutkan nama parameternya saat memanggil function
+  4. Jelaskan maksud Functions sebagai first-class objects beserta contoh sintaknya!  
+      Fungsi bisa disimpan di varabel, fungsi bisa dikirim sebagai parameter ke fungsi lain, fungsi bisa dikembalikan dari fungsi lain
+      + Contoh fungsi disimpan di variabel  
+        ```
+        void sapa(String nama) {
+          print("Halo, $nama!");
+        }
+
+        void main() {
+          // simpan fungsi ke variabel
+          var greet = sapa;  
+          greet("Budi"); // Output: Halo, Budi!
+        }
+        ```
+      + Contoh fungsi sebagai parameter  
+        ```
+        void prosesAngka(int a, int b, int Function(int, int) operasi) {
+          print("Hasil: ${operasi(a, b)}");
+        }
+
+        int tambah(int x, int y) => x + y;
+        int kali(int x, int y) => x * y;
+
+        void main() {
+          prosesAngka(3, 4, tambah); // Output: Hasil: 7
+          prosesAngka(3, 4, kali);   // Output: Hasil: 12
+        }
+
+        ```
+      + Fungsi mengembalikan fungsi
+        ```
+        Function buatPengali(int faktor) {
+          return (int angka) => angka * faktor;
+        }
+
+        void main() {
+          var kaliDua = buatPengali(2);
+          var kaliTiga = buatPengali(3);
+
+          print(kaliDua(5)); // Output: 10
+          print(kaliTiga(5)); // Output: 15
+        }
+
+        ```
+  5. Apa itu Anonymous Functions? Jelaskan dan berikan contohnya!  
+  Fungsi anonim adalah fungsi tanpa nama, contoh  
+  ```
+  // normal function
+  int penjumlahan (int a, int b){
+    return a + b;
+  }
+
+  // anonimus function
+  (parameter1, parameter2, ...) {
+    // body function
+    return hasil;
+  };
+  ```
+  6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!  
+     - Lexical scope = ruang lingkup variabel ditentukan oleh posisi kode saat ditulis (compile time), bukan saat dijalankan.
+     - Closure = fungsi yang “membawa” scope tempat dia dibuat, bahkan setelah scope itu selesai dieksekusi, Contoh  
+        ```
+          Function buatPenghitung() {
+            var hitung = 0;
+
+            // ini closure
+            return () {
+              hitung++;
+              return hitung;
+            };
+          }
+
+          void main() {
+            var counter1 = buatPenghitung();
+            print(counter1()); // 1
+            print(counter1()); // 2
+            print(counter1()); // 3
+
+            var counter2 = buatPenghitung();
+            print(counter2()); // 1 (punya scope sendiri)
+          }
+
+        ```
+  7. Jelaskan dengan contoh cara membuat return multiple value di Functions!
+  ```
+    List<int> hitung(int a, int b) {
+      return [a + b, a - b, a * b];
+    }
+
+    void main() {
+      var hasil = hitung(10, 5);
+      print("Tambah: ${hasil[0]}, Kurang: ${hasil[1]}, Kali: ${hasil[2]}");
+      
+      // Hasil print "Tambah: 15, Kurang: 5, Kali: 50"
+    }
+  ```
