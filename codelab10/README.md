@@ -21,4 +21,15 @@
 
     Langkah 13 kita mematikan atau menghapus state controller yang kita buat sebelumnya ketika kita menutup halaman. Hal ini dilakukan agar tidak ada kebocoran memori, karena setiap kali kita membuka halaman tersebut maka objek controller baru akan diinisialisasi ulang, sehingga tanpa dispose maka controller akan terduplikasi.  
 
-## Praktikum 2 : 
+## Praktikum 2 : InheritedWidget
+
+2. Jelaskan mana yang dimaksud InheritedWidget pada langkah 1 tersebut! Mengapa yang digunakan InheritedNotifier?  
+    Inherited widget adalah mekanisme dasar flutter untuk membagikan data ke widget anak.
+    Mengapa menggunakan inheritedNotifier karena ValueNotifier akan otomatis memberi tahu widget turunan untuk rebuild, sehingga kita tidak perlu setState manual.  
+
+3. Jelaskan maksud dari method di langkah 3 pada praktikum tersebut! Mengapa dilakukan demikian?  
+    Method-method tersebut mengembalikan jumlah todo-list yang sudah kita selesaikan dan pesan berupa perbandingan tugas selesai dibanding total tugas.  
+
+4. ![Percobaan 2](/codelab10/img_praktikum/percobaan%202.gif)  
+
+## Praktikum 3 : 
