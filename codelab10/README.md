@@ -32,4 +32,9 @@
 
 4. ![Percobaan 2](/codelab10/img_praktikum/percobaan%202.gif)  
 
-## Praktikum 3 : 
+## Praktikum 3 : State di multiple screens
+
+2. Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!  
+    Saat Navigator push halaman baru, terbentuk subtree widget baru.  
+    Jika provider tidak berada di atas MaterialApp, halaman baru tidak bisa mewarisi state dari halaman sebelumnya.  
+3. ![percobaan 3](/codelab10/img_praktikum/Percobaan%203.gif)
