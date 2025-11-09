@@ -4,10 +4,13 @@
 
 2. ![Soal 2](/codelab11/img/soal2.png)
  
-3. `result = value.body.toString().substring(0, 450);`  
+3. `result = value.body.toString().substring(0, 450);`    
     `value.body` = response JSON mentah dari Google Books API  
     `.toString()` = mengubah ke string (meskipun sebenarnya sudah string)  
     `.substring(0, 450)` = memotong string dari indeks 0 sampai 449  
     ![Soal 3](/codelab11/img/w11_soal3.gif)  
 
-4. 
+4.  **Langkah 1** membuat method dengan jenis future yang akan mengembalikan nilai 1, 2, dan 3 setelah delay yang tertera yaitu 3 detik.  
+
+    **Langkah 2** merupakan method count yang didalamnya memanggil 3 method yang dibuat sebelumnya, dengan menginisialisasikan variabel total bertipe int yang nantinya di increment dengan hasil 3 method dari langkah 1. Sehingga akan mengembalikan nilai 6 dengan total delay 9 detik.  
+    ![Soal 3](/codelab11/img/w11_soal4.gif) 
