@@ -30,10 +30,12 @@ class FuturePage extends StatefulWidget {
 }
 
 class _FuturePageState extends State<FuturePage> {
+  bool isLoading = false;
+
   Future<Response> getData() async {
     const authority = 'www.googleapis.com';
     const path = '/books/v1/volumes/OyB4llvAoXQC';
-    Uri url = Uri.https(authority, path); 
+    Uri url = Uri.https(authority, path);
     return http.get(url);
   }
 
@@ -41,22 +43,38 @@ class _FuturePageState extends State<FuturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Back from the Future'),
-      ),
+      appBar: AppBar(title: const Text('Back from the Future')),
       body: Center(
-        child: Column(children: [
-          const Spacer(),
-          ElevatedButton(
-            child: const Text('Go'),
-            onPressed: () {},
-          ),
-          const Spacer(),
-          Text(result),
-          const Spacer(),
-          const CircularProgressIndicator(),
-          const Spacer()
-        ],),
+        child: Column(
+          children: [
+            const Spacer(),
+            ElevatedButton(
+              child: const Text('Go'),
+              onPressed: () {
+                setState(() {
+                  isLoading = true;
+                });
+                getData()
+                  .then((value) {
+                    result = value.body.toString().substring(0, 450);
+                  })
+                  .catchError((_) {
+                    result = 'An error occured';
+                  })
+                  .whenComplete(() {
+                    setState(() {
+                      isLoading = false;
+                    });
+                  });
+              },
+            ),
+            const Spacer(),
+            Text(result),
+            const Spacer(),
+            if (isLoading) const CircularProgressIndicator(),
+            const Spacer(),
+          ],
+        ),
       ),
     );
   }
