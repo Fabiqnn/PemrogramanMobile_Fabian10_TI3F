@@ -18,4 +18,7 @@
 5. Langkah 2 membuat method future yang akan diselesaikan secara manual setelah 5 detik.  
     ![Soal 5](/codelab11/img/w11_soal5.gif)
 
-6. 
+6. Versi baru hanya menambahkan try–catch, sehingga jika terjadi error (misalnya completer.complete dipanggil dua kali), future akan diselesaikan dengan completeError alih-alih melempar exception ke atas.  
+    ![Soal 6](/codelab11/img/w11_soal5.gif)
+
+7. 
