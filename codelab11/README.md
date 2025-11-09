@@ -13,4 +13,9 @@
 4.  **Langkah 1** membuat method dengan jenis future yang akan mengembalikan nilai 1, 2, dan 3 setelah delay yang tertera yaitu 3 detik.  
 
     **Langkah 2** merupakan method count yang didalamnya memanggil 3 method yang dibuat sebelumnya, dengan menginisialisasikan variabel total bertipe int yang nantinya di increment dengan hasil 3 method dari langkah 1. Sehingga akan mengembalikan nilai 6 dengan total delay 9 detik.  
-    ![Soal 3](/codelab11/img/w11_soal4.gif) 
+    ![Soal 4](/codelab11/img/w11_soal4.gif) 
+
+5. Langkah 2 membuat method future yang akan diselesaikan secara manual setelah 5 detik.  
+    ![Soal 5](/codelab11/img/w11_soal5.gif)
+
+6. 
