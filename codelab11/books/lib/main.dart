@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -34,6 +34,28 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   bool isLoading = false;
   late Completer completer;
+
+  void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+
+    futureGroup.future.then((List<int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    }).whenComplete(() {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   Future getNumber() {
     completer = Completer<int>();
@@ -97,29 +119,7 @@ class _FuturePageState extends State<FuturePage> {
                 setState(() {
                   isLoading = true;
                 });
-                // getData()
-                //   .then((value) {
-                //     result = value.body.toString().substring(0, 450);
-                //   })
-                //   .catchError((_) {
-                //     result = 'An error occured';
-                //   })
-                //   .whenComplete(() {
-                //     setState(() {
-                //       isLoading = false;
-                //     });
-                //   });
-                getNumber().then((value) {
-                  setState(() {
-                    result = value.toString();
-                  });
-                }).whenComplete(() {
-                  setState(() {
-                    isLoading = false;
-                  });
-                }).catchError((e) {
-                  result = 'An error occured';
-                });
+                returnFG();
               },
             ),
             ElevatedButton(

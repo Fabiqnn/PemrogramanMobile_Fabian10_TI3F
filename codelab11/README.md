@@ -21,4 +21,6 @@
 6. Versi baru hanya menambahkan try–catch, sehingga jika terjadi error (misalnya completer.complete dipanggil dua kali), future akan diselesaikan dengan completeError alih-alih melempar exception ke atas.  
     ![Soal 6](/codelab11/img/w11_soal5.gif)
 
-7. 
+7. ![Soal 7](/codelab11/img/W11_soal7.gif)
+
+8. 
