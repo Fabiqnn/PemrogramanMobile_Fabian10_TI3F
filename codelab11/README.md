@@ -23,4 +23,6 @@
 
 7. ![Soal 7](/codelab11/img/W11_soal7.gif)
 
-8. 
+8.  - FutureGroup = lebih fleksibel untuk future yang
+    ditambahkan secara bertahap/dinamis.  
+    - Future.wait = lebih sederhana dan tepat untuk kumpulan future statis seperti contohmu.
