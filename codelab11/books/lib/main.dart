@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:async/async.dart';
+import 'package:books/geolocation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const FuturePage(),
+      home: const LocationScreen(),
     );
   }
 }
@@ -34,6 +35,19 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   bool isLoading = false;
   late Completer completer;
+
+  Future handleError() async {
+    try {
+      await returnError();
+    } catch (e) {
+      setState(() {
+        result = e.toString();
+      });
+    }
+    finally {
+      debugPrint('Complete');
+    }
+  }
 
   Future returnError() async {
     await Future.delayed(const Duration(seconds: 2));
@@ -134,6 +148,7 @@ class _FuturePageState extends State<FuturePage> {
                     result = onError.toString();
                   });
                 }).whenComplete(() => debugPrint('Complete'));
+                handleError();
               },
             ),
             ElevatedButton(

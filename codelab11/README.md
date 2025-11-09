@@ -29,4 +29,6 @@
 
 9. ![Soal 9](/codelab11/img/W11_soal9.gif)
 
-10. 
+10. Dengan adanya handleError(), error dieksekusi dua kali, ditangani dua kali, dan state UI/print dieksekusi dua kali. Tanpa handleError(), error hanya muncul sekali dan alur lebih mudah diprediksi.
+
+11. ![Soal 12](/codelab11/img/W11_soal12.gif)
