@@ -32,3 +32,13 @@
 10. Dengan adanya handleError(), error dieksekusi dua kali, ditangani dua kali, dan state UI/print dieksekusi dua kali. Tanpa handleError(), error hanya muncul sekali dan alur lebih mudah diprediksi.
 
 11. ![Soal 12](/codelab11/img/W11_soal12.gif)
+
+12. Perbedaan yang benar-benar terlihat oleh pengguna:  
+    - Teks yang ditampilkan berubah (format rapi vs .toString() bawaan Position).  
+    - Transisi UI bisa sedikit berbeda karena FutureBuilder melakukan rebuild bertahap.  
+    - Perbedaan di balik layar (yang memengaruhi UI secara tidak langsung):  
+    - Versi lama menggunakan setState manual, versi baru menggunakan FutureBuilder.  
+    - FutureBuilder lebih reaktif terhadap perubahan state future.  
+    - Variabel myPosition tidak lagi digunakan, tetapi masih menentukan UI awal.  
+
+13. 
