@@ -40,5 +40,10 @@
     - Versi lama menggunakan setState manual, versi baru menggunakan FutureBuilder.  
     - FutureBuilder lebih reaktif terhadap perubahan state future.  
     - Variabel myPosition tidak lagi digunakan, tetapi masih menentukan UI awal.  
+    ![Soal 13](/codelab11/img/W11_soal12.gif)
 
-13. 
+13. Pada kondisi normal, UI tidak berubah sama sekali dibanding sebelumnya.
+Pada kondisi error, UI sekarang menampilkan pesan “Something terrible happened!”, yang sebelumnya tidak muncul.
+Jadi perubahan UI hanya terjadi ketika future gagal, bukan ketika sukses.
+
+14. 
