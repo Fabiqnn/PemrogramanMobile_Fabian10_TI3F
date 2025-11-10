@@ -47,3 +47,5 @@ Pada kondisi error, UI sekarang menampilkan pesan “Something terrible happened
 Jadi perubahan UI hanya terjadi ketika future gagal, bukan ketika sukses.
 
 14. ![Soal 16](/codelab11/img/W11_soal16.gif)
+
+15. ![Soal 16](/codelab11/img/W11_soal17.gif)
