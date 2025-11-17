@@ -7,3 +7,6 @@
 3. `` yield* `` berfungsi untuk mendelegasikan ke fungsi generator lain atau yang dapat diulang, yang secara efektif menggabungkan seluruh urutan nilainya ke dalam keluaran generator saat ini.  
 
 4. ![Soal 3](/codelab12/img/W12_soal3.gif)
+
+5. perbedaannya adalah await for akan menunggu stream di close baru kemudian menjalankan kode yang ada di bawahnya, sedangkan listen dilakukan hampir bersamaan listen tidak menunggu apapun.
+
