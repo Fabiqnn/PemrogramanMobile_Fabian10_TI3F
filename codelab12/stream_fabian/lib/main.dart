@@ -76,7 +76,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-    Stream stream = numberStreamController.stream;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
     subscription = stream.listen((e) {
       setState(() {
         values += '$e - ';
@@ -131,7 +131,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(lastNumber.toString()),
+            Text(values),
             ElevatedButton(onPressed: () => addRandomNumber(), child: Text('New Random Number')),
             ElevatedButton(onPressed: () => stopStream(), child: const Text('Stop Subscription'))
           ],
