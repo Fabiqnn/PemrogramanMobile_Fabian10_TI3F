@@ -10,3 +10,12 @@
 
 5. perbedaannya adalah await for akan menunggu stream di close baru kemudian menjalankan kode yang ada di bawahnya, sedangkan listen dilakukan hampir bersamaan listen tidak menunggu apapun.
 
+6.  Langkah 8  
+    -  Membuat objek NumberStream
+    - Mengambil controller dari NumberStream
+    - Mengambil stream dari controller
+    - Mendaftarkan data ke listner  
+    Langkah 10
+    - Memasukkan data angka random ke stream
+
+10. 
