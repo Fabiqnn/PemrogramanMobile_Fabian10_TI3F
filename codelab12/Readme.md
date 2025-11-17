@@ -4,4 +4,6 @@
 
 2. ![Soal 2](/codelab12/img/image2.png)  
 
-3. 
+3. `` yield* `` berfungsi untuk mendelegasikan ke fungsi generator lain atau yang dapat diulang, yang secara efektif menggabungkan seluruh urutan nilainya ke dalam keluaran generator saat ini.  
+
+4. 
