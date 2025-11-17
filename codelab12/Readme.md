@@ -22,3 +22,6 @@
 
 8. ![Soal 8](/codelab12/img/W12_soal8.gif)
 
+9. ![soal 9](/codelab12/img/image3.png)
+
+10.

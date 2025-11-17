@@ -30,6 +30,8 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  late StreamSubscription subscription;
+
   late StreamTransformer transformer;
 
   Color bgColor = Colors.blueGrey;
@@ -52,10 +54,13 @@ class _StreamHomePageState extends State<StreamHomePage> {
     });
   }
 
+  void stopStream() {
+    numberStreamController.close();
+  }
+
   @override
   void initState() {
     super.initState();
-
     transformer = StreamTransformer<int, int>.fromHandlers(
       handleData: (val, sink) {
         sink.add(val * 10);
@@ -69,28 +74,40 @@ class _StreamHomePageState extends State<StreamHomePage> {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
     Stream stream = numberStreamController.stream;
-    stream.transform(transformer).listen((e) {
+    subscription = stream.listen((e) {
       setState(() {
         lastNumber = e;
       });
-    }).onError((handleError) {
+    });
+
+    subscription.onError((e) {
       setState(() {
         lastNumber = -1;
       });
+    });
+
+    subscription.onDone(() {
+      debugPrint('OnDone was called');
     });
   }
 
   @override
   void dispose() {
     numberStreamController.close();
+    subscription.cancel();
     super.dispose();
   }
 
   void addRandomNumber() {
     Random random = Random();
     int myNum = random.nextInt(10);
-    numberStream.addNumberToSink(myNum);
-    // numberStream.addError();
+    if (!numberStreamController.isClosed) {
+      numberStream.addNumberToSink(myNum);
+    } else {
+      setState(() {
+        lastNumber = -1;
+      });
+    }
   }
 
   @override
@@ -106,7 +123,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(lastNumber.toString()),
-            ElevatedButton(onPressed: () => addRandomNumber(), child: Text('New Random Number'))
+            ElevatedButton(onPressed: () => addRandomNumber(), child: Text('New Random Number')),
+            ElevatedButton(onPressed: () => stopStream(), child: const Text('Stop Subscription'))
           ],
         ),
       ),
