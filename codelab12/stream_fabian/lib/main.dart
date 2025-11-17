@@ -30,6 +30,9 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  late StreamSubscription subscription2;
+  String values = '';
+
   late StreamSubscription subscription;
 
   late StreamTransformer transformer;
@@ -76,7 +79,13 @@ class _StreamHomePageState extends State<StreamHomePage> {
     Stream stream = numberStreamController.stream;
     subscription = stream.listen((e) {
       setState(() {
-        lastNumber = e;
+        values += '$e - ';
+      });
+    });
+
+    subscription2 = stream.listen((e) {
+      setState(() {
+        values += '$e - ';
       });
     });
 

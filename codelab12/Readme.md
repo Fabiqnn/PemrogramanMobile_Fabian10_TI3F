@@ -24,4 +24,4 @@
 
 9. ![soal 9](/codelab12/img/image3.png)
 
-10.
+10. Muncul error stream has already been listened to karena mencoba untuk mendengar stream yang sama dua kali, default stream merupakan single-subscription. Sehingga agar dapat membuat banyak listener kita perlu broadcast.
