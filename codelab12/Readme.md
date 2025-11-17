@@ -35,4 +35,5 @@
     - Langkah 7
         Widget yang otomatis rebuild setiap kali stream mengirim event  
 
-13. 
+13. Inti dari praktikum ini adalah mengajarkan pola BLoC sederhana dengan memisahkan arsitektur UI dengan logic, menggunakan sink dan stream sebagai dasar alurnya  
+    ![Soal 13](/codelab12/img/W12_soal%2013.gif)
