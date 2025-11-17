@@ -19,3 +19,6 @@
     - Memasukkan data angka random ke stream
 
 7. Menambahkan fungsi add error dan handling error handling error dilakukan jika terdapat error maka set angka menjadi -1.
+
+8. ![Soal 8](/codelab12/img/W12_soal8.gif)
+
