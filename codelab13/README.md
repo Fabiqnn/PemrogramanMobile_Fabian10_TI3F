@@ -6,4 +6,4 @@
 
 3. ![Soal 3](/codelab13/img/soal3.png)
 
-4. 
+4. ![Soal 4](/codelab13/img/soal4.png)

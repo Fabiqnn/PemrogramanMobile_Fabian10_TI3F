@@ -43,7 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // setState(() {
     //   pizzaString = myString;
     // });
+    String json = converToJSON(myPizzas);
+    debugPrint(json);
     return myPizzas;
+  }
+
+  String converToJSON(List<Pizza> pizzas) {
+    return jsonEncode(pizzas.map((pizza) => jsonEncode(pizza)).toList());
   }
 
   @override
