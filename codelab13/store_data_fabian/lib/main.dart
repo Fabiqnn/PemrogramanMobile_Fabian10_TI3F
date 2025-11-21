@@ -4,6 +4,7 @@ import 'package:store_data_fabian/model/pizza.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -39,6 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
   String tempPath = '';
   late File myFile;
   String fileText='';
+
+  final pwdController = TextEditingController();
+  String myPass = '';
+
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass';
+
+  Future writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
+  }
 
   Future<bool> readFile() async {
     try {
@@ -135,11 +151,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Doc path: $documentsPath'),
-          Text('Temp path: $tempPath'),
-
-          ElevatedButton(onPressed: () => readFile(), child: const Text('Read File')),
-          Text(fileText)
+          TextField(
+            controller: pwdController,
+          ),
+          ElevatedButton(onPressed: () {writeToSecureStorage();}, child: const Text('Save Value')),
+          ElevatedButton(onPressed: () {readFromSecureStorage().then((value) {
+            setState(() {
+              myPass = value;
+            });
+          });}, child: const Text('Read Value')),
+          Text(myPass)
         ],
       )
       // body: ListView.builder(

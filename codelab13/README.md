@@ -18,3 +18,5 @@
 
 8. ![alt text](/codelab13/img/W13_soal8.gif)
     - Fungsi tersebut menulis string ke file secara asynchronous.
+
+8. ![alt text](/codelab13/img/W13_soal9.gif)
