@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store_data_fabian/model/pizza.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -33,6 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
   int appCounter = 0;
   String pizzaString = '';
   List<Pizza> myPizzas = [];
+  String documentsPath = '';
+  String tempPath = '';
+
+  Future getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
+    setState(() {
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
+    });
+  }
 
   Future readAndWritePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -76,7 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    readAndWritePreference();
+    getPaths();
+    // readAndWritePreference();
     // readJsonFile().then((value) {
     //   setState(() {
     //     myPizzas = value;
@@ -88,18 +101,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shared Preferences'),
+        title: const Text('Path Provider'),
         backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('You have opened the app $appCounter times.'),
-            ElevatedButton(onPressed: () {deletePreferences();}, child: Text('Reset counter'))
-          ],
-        ),
-      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text('Doc path: $documentsPath'),
+          Text('Temp path: $tempPath'),
+        ],
+      )
       // body: ListView.builder(
       //   itemCount: myPizzas.length,
       //   itemBuilder: (context, index) {
