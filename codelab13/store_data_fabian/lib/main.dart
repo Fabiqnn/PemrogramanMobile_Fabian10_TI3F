@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store_data_fabian/model/pizza.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -36,6 +37,29 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Pizza> myPizzas = [];
   String documentsPath = '';
   String tempPath = '';
+  late File myFile;
+  String fileText='';
+
+  Future<bool> readFile() async {
+    try {
+      String fileContent = await myFile.readAsStringSync();
+      setState(() {
+        fileText = fileContent;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   Future getPaths() async {
     final docDir = await getApplicationDocumentsDirectory();
@@ -88,7 +112,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    getPaths();
+    getPaths().then((_) {
+      myFile = File('$documentsPath/pizzas.txt');
+      writeFile();
+    });
+    // getPaths();
     // readAndWritePreference();
     // readJsonFile().then((value) {
     //   setState(() {
@@ -109,6 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Text('Doc path: $documentsPath'),
           Text('Temp path: $tempPath'),
+
+          ElevatedButton(onPressed: () => readFile(), child: const Text('Read File')),
+          Text(fileText)
         ],
       )
       // body: ListView.builder(

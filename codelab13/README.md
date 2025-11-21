@@ -15,3 +15,6 @@
 6. ![soal 6](/codelab13/img/W13_soal6.gif)
 
 7. ![alt text](/codelab13/img/soal7.png)
+
+8. ![alt text](/codelab13/img/W13_soal8.gif)
+    - Fungsi tersebut menulis string ke file secara asynchronous.
